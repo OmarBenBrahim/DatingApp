@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -22,8 +22,18 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
-
-
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LodingInterceptor } from './interceptors/loding.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { TextInputComponent } from './forms/text-input/text-input.component';
+import { DatePickerComponent } from './forms/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   declarations: [
@@ -39,6 +49,10 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     NotFoundComponent,
     ServerErrorComponent,
     MemberCardComponent,
+    MemberEditComponent,
+    PhotoEditorComponent,
+    TextInputComponent,
+    DatePickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,12 +61,21 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     FormsModule,
     SharedModule,
     BrowserAnimationsModule,
+    FileUploadModule,
+    ReactiveFormsModule,
     TabsModule.forRoot(),
-    NgxGalleryModule
+    BsDropdownModule.forRoot(),
+    NgxGalleryModule,
+    NgxSpinnerModule.forRoot({type: 'ball-atom'}),
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
+    TimeagoModule.forRoot(),
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass: ErrorInterceptor , multi:true },
     {provide : HTTP_INTERCEPTORS, useClass: JwtInterceptor , multi:true },
+    {provide : HTTP_INTERCEPTORS, useClass: LodingInterceptor , multi:true },
   ],
   bootstrap: [AppComponent]
 })
