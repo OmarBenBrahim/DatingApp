@@ -34,6 +34,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { TimeagoModule } from 'ngx-timeago';
     PhotoEditorComponent,
     TextInputComponent,
     DatePickerComponent,
+    MemberMessagesComponent,
   ],
   imports: [
     BrowserModule,
